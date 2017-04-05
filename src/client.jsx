@@ -10,9 +10,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-
+let defaultState = {}
+if(typeof STATE_FROM_SERVER != "undefined"){
+    defaultState=STATE_FROM_SERVER;
+}
 let reducer = combineReducers({...reducers});
-const store = createStore(reducer, composeWithDevTools(
+const store = createStore(reducer,defaultState,composeWithDevTools(
     applyMiddleware(thunk),
     // other store enhancers if any
 ));

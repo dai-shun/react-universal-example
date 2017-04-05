@@ -1,11 +1,8 @@
 /**
  * Created by daishun on 2017/4/4.
  */
-let defaultState = {}
-if(typeof INITIAL_STATE != "undefined"){
-    defaultState=INITIAL_STATE.about;
-}
-function reducer(state =defaultState, action) {
+
+function reducer(state={}, action) {
     switch (action.type) {
         case "SET_USER_LIST":
             let {data}=action;

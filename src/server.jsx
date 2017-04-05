@@ -64,7 +64,7 @@ createServer((req, res) => {
                 </head>
                 <body>
                     <div id="app">${html}</div>
-                    <script>var INITIAL_STATE=${JSON.stringify(store.getState())};</script>
+                    <script>var STATE_FROM_SERVER=${JSON.stringify(store.getState())};</script>
                     <script src="./index.js" async></script>
                 </body>
                 </html>
