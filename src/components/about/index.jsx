@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import {queryUserList} from "../../actions/about"
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
-class About extends React.Component{
+
+@connect(state=>{return {list: state.about.list}},dispatch=>{return {queryUserList: bindActionCreators(queryUserList, dispatch)}})
+export default class About extends React.Component{
    componentDidMount(){
      this.props.queryUserList();
    }
@@ -20,12 +22,4 @@ class About extends React.Component{
         )
     }
 }
-function mapStateToProps(state) {
-    return { list: state.about.list};
-}
-function buildActionDispatcher(dispatch) {
-    return {
-        queryUserList: bindActionCreators(queryUserList, dispatch),
-    }
-}
-export default connect(mapStateToProps,buildActionDispatcher)(About);
+
